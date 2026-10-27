@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salvi Vidal — Curriculum Vitae</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter (versión completa con pesos finos 200, 300, 400, 500) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          letterSpacing: {
+            tighter: '-0.035em',
+            tight: '-0.02em',
+            widest: '0.14em',
+          },
+          colors: {
+            ink: '#0a0a0a',
+            subtle: '#666666',
+            faint: '#8e8e93',
+            borderline: '#e5e5e7',
+            surface: '#fbfbfd',
+            pill: '#f2f2f4'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Línea sutil de tiempo vertical */
+    .timeline-stem {
+      position: absolute;
+      top: 0.6rem;
+      bottom: 0.6rem;
+      left: 0.45rem;
+      width: 1px;
+      background: #e5e5e7;
+    }
+
+    /* Toast temporal */
+    #copy-toast {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    /* Optimización para impresión (PDF perfecto) */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page-break {
+        page-break-before: always;
+      }
+      .shadow-sm, .shadow-lg, .border {
+        box-shadow: none !important;
+      }
+      a {
+        text-decoration: none !important;
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white text-ink font-sans font-light selection:bg-neutral-200 selection:text-black min-h-screen flex flex-col justify-between">
+
+  <!-- BARRA DE ACCIONES SUPERIOR (Minimalista y flotante) -->
+  <header class="no-print sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-borderline">
+    <div class="max-w-5xl mx-auto px-6 py-3.5 flex items-center justify-between text-xs">
+      <div class="flex items-center gap-3 text-subtle">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-neutral-900"></span>
+        <span class="tracking-wide uppercase font-normal text-[11px] text-ink">Salvi Vidal</span>
+        <span class="text-neutral-300">/</span>
+        <span class="hidden sm:inline text-faint">Barcelona, España</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="window.print()" class="px-3 py-1.5 rounded border border-neutral-300 hover:border-black text-neutral-700 hover:text-black transition-colors flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          <span>Imprimir / Guardar PDF</span>
+        </button>
+
+        <a href="mailto:salvividal@gmail.com" class="px-3.5 py-1.5 rounded bg-ink hover:bg-neutral-800 text-white transition-colors font-normal">
+          Contactar
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="max-w-5xl mx-auto px-6 pt-12 pb-24 w-full flex-grow">
+
+    <!-- CABECERA PRINCIPAL: IDENTIDAD & ROL -->
+    <section class="border-b border-borderline pb-12 mb-12">
+      <div class="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
+        
+        <div class="max-w-2xl">
+          <span class="text-[11px] tracking-widest uppercase text-faint font-medium mb-3 block">
+            Curriculum Vitae Profesional
+          </span>
+          <h1 class="text-4xl sm:text-5xl font-light tracking-tighter text-ink mb-4">
+            Salvi Vidal
+          </h1>
+          <p class="text-lg sm:text-xl text-subtle font-light leading-relaxed">
+            Técnico Comercial, Especialista en Prescripción Arquitectónica, Licitación Pública y Negociación Contract.
+          </p>
+        </div>
+
+        <!-- DATOS DE CONTACTO DIRECTO -->
+        <div class="w-full sm:w-auto rounded-lg border border-borderline bg-surface p-4 text-left text-xs text-subtle">
+          <h2 class="mb-3 text-[11px] font-medium uppercase tracking-widest text-faint">Contacto directo</h2>
+          <div class="flex flex-col items-start space-y-2">
+            <div class="flex items-center gap-2 group cursor-pointer" onclick="copyToClipboard('salvividal@gmail.com', 'Correo copiado al portapapeles')">
+              <span class="text-faint">Email:</span>
+              <span class="text-ink font-normal hover:underline underline-offset-4">salvividal@gmail.com</span>
+              <svg class="w-3.5 h-3.5 text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </div>
+
+            <div class="flex items-center gap-2 group cursor-pointer" onclick="copyToClipboard('607663084', 'Teléfono copiado al portapapeles')">
+              <span class="text-faint">Tel:</span>
+              <span class="text-ink font-normal hover:underline underline-offset-4">607 663 084</span>
+              <svg class="w-3.5 h-3.5 text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-faint">LinkedIn:</span>
+              <a href="https://linkedin.com/in/salvividal" target="_blank" rel="noopener noreferrer" class="text-ink font-normal hover:underline underline-offset-4">
+                linkedin.com/in/salvividal
+              </a>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-faint">Ubicación:</span>
+              <span class="text-ink">Barcelona, Cataluña</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- EXTRACTO EJECUTIVO -->
+      <div class="mt-8 pt-8 border-t border-neutral-100">
+        <p class="text-sm sm:text-base text-subtle leading-relaxed max-w-3xl font-light">
+          Persona organizada, tenaz y extrovertida, con probada capacidad para generar relaciones comerciales duraderas y confiables. Especialista en liderar el ciclo comercial completo: prescripción técnica con administraciones públicas y estudios de arquitectura, elaboración de ofertas técnicas, seguimiento riguroso a pie de obra y cierre de negociaciones con empresas constructoras y clientes corporativos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ESTRUCTURA PRINCIPAL: COLUMNA LATERAL + TRAYECTORIA -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <!-- COLUMNA IZQUIERDA (Metadatos, Competencias, Formación) -->
+      <aside class="lg:col-span-4 space-y-10 order-2 lg:order-1">
+
+        <!-- COMPETENCIAS CLAVE -->
+        <div>
+          <h2 class="text-xs uppercase tracking-widest text-faint font-semibold mb-4">
+            Competencias Clave
+          </h2>
+          <div class="space-y-4 text-xs">
+            <div>
+              <h3 class="font-normal text-ink mb-1">Ventas & Sector Público</h3>
+              <p class="text-subtle font-light leading-normal">
+                Venta consultiva a ayuntamientos, alcaldes y técnicos. Seguimiento de pliegos y licitación pública. Negociación con constructoras adjudicatarias.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="font-normal text-ink mb-1">Prescripción & Arquitectura</h3>
+              <p class="text-subtle font-light leading-normal">
+                Asesoramiento de diseño a estudios de arquitectura e interiorismo. Prospección en promotoras e inversores.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="font-normal text-ink mb-1">Dirección de Obra & Contract</h3>
+              <p class="text-subtle font-light leading-normal">
+                Visitas in situ a pie de obra, control de tolerancias, resolución de incidencias y entregas llave en mano.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="font-normal text-ink mb-1">Marketing & Herramientas de Venta</h3>
+              <p class="text-subtle font-light leading-normal">
+                Sales enablement, Sales Books de producto, formación a retail, acuerdos de patrocinio y redes sociales.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMACIÓN ACADÉMICA -->
+        <div class="pt-8 border-t border-borderline">
+          <h2 class="text-xs uppercase tracking-widest text-faint font-semibold mb-4">
+            Formación Académica
+          </h2>
+          <div class="space-y-4 text-xs">
+            <div>
+              <span class="text-faint text-[11px] block font-mono">2004 — 2007</span>
+              <h3 class="text-ink font-normal mt-0.5">Técnico Superior en Informática Empresarial</h3>
+              <p class="text-subtle font-light">GESEM Formación y Consultoría</p>
+            </div>
+            <div>
+              <span class="text-faint text-[11px] block font-mono">1995 — 1999</span>
+              <h3 class="text-ink font-normal mt-0.5">Comunicación, Imagen y Sonido</h3>
+              <p class="text-subtle font-light">Escuela MK3</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HABILIDADES TÉCNICAS & DIGITALES -->
+        <div class="pt-8 border-t border-borderline">
+          <h2 class="text-xs uppercase tracking-widest text-faint font-semibold mb-4">
+            Herramientas & Entorno Digital
+          </h2>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-[11px] px-2.5 py-1 rounded bg-surface border border-neutral-200 text-subtle font-normal">CRM & ERP</span>
+            <span class="text-[11px] px-2.5 py-1 rounded bg-surface border border-neutral-200 text-subtle font-normal">Licitación Pública</span>
+            <span class="text-[11px] px-2.5 py-1 rounded bg-surface border border-neutral-200 text-subtle font-normal">Photoshop / InDesign</span>
+            <span class="text-[11px] px-2.5 py-1 rounded bg-surface border border-neutral-200 text-subtle font-normal">Ventas Contract</span>
+            <span class="text-[11px] px-2.5 py-1 rounded bg-surface border border-neutral-200 text-subtle font-normal">HTML5 / CSS3 / JS</span>
+            <span class="text-[11px] px-2.5 py-1 rounded bg-surface border border-neutral-200 text-subtle font-normal">MySQL / PHP</span>
+            <span class="text-[11px] px-2.5 py-1 rounded bg-surface border border-neutral-200 text-subtle font-normal">Social Media & Web</span>
+          </div>
+        </div>
+
+        <!-- IDIOMAS -->
+        <div class="pt-8 border-t border-borderline">
+          <h2 class="text-xs uppercase tracking-widest text-faint font-semibold mb-4">
+            Idiomas
+          </h2>
+          <ul class="space-y-2 text-xs">
+            <li class="flex justify-between items-center text-subtle">
+              <span class="text-ink font-normal">Castellano</span>
+              <span class="text-faint">Nativo</span>
+            </li>
+            <li class="flex justify-between items-center text-subtle">
+              <span class="text-ink font-normal">Catalán</span>
+              <span class="text-faint">Nativo</span>
+            </li>
+            <li class="flex justify-between items-center text-subtle">
+              <span class="text-ink font-normal">Inglés</span>
+              <span class="text-faint">Competencia Básica</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- DEPORTE & VALORES -->
+        <div class="pt-8 border-t border-borderline">
+          <h2 class="text-xs uppercase tracking-widest text-faint font-semibold mb-3">
+            Valores & Deporte
+          </h2>
+          <p class="text-xs text-subtle font-light leading-relaxed mb-3">
+            Pasión por la constancia, el trabajo en equipo y el esfuerzo deportivo continuo.
+          </p>
+          <div class="space-y-2 text-xs text-subtle font-light">
+            <p>
+              <span class="text-ink font-normal">Marnaton eDreams:</span> Colaborador en aguas abiertas (Costa Brava y Formentera) desde 2011.
+            </p>
+            <p>
+              <span class="text-ink font-normal">Half Sailfish Triatlón:</span> Colaborador con Dual Grups desde 2015.
+            </p>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- COLUMNA DERECHA: TRAYECTORIA PROFESIONAL DETALLADA -->
+      <section class="lg:col-span-8 order-1 lg:order-2">
+
+        <!-- Selector sutil de filtro (para visualización en pantalla) -->
+        <div class="no-print flex items-center justify-between pb-4 mb-6 border-b border-borderline text-xs">
+          <span class="text-xs uppercase tracking-widest text-faint font-semibold">Experiencia Profesional</span>
+          <div class="flex items-center gap-1">
+            <button onclick="filterExperience('all')" id="filter-btn-all" class="px-2.5 py-1 rounded text-ink bg-neutral-100 font-medium transition-colors">
+              Todos (6)
+            </button>
+            <button onclick="filterExperience('commercial')" id="filter-btn-commercial" class="px-2.5 py-1 rounded text-subtle hover:text-ink transition-colors">
+              Prescripción & Ventas
+            </button>
+            <button onclick="filterExperience('tech-mkt')" id="filter-btn-tech-mkt" class="px-2.5 py-1 rounded text-subtle hover:text-ink transition-colors">
+              Mkt & Tech
+            </button>
+          </div>
+        </div>
+
+        <!-- LISTADO CRONOLÓGICO -->
+        <div class="space-y-12">
+
+          <!-- 1. URBADIS MICROARQUITECTURA -->
+          <article class="exp-item relative pl-7" data-category="commercial">
+            <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full border border-neutral-900 bg-white"></span>
+            
+            <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <div>
+                <h3 class="text-base sm:text-lg font-normal text-ink">Urbadis Microarquitectura</h3>
+                <span class="text-xs text-subtle font-light">Técnico Comercial · Zona Sur</span>
+              </div>
+              <time class="text-xs text-faint font-mono">2024 — Actualidad</time>
+            </header>
+
+            <p class="text-xs sm:text-sm text-subtle font-light leading-relaxed mb-3">
+              Atención y venta consultiva en administraciones públicas locales. Captación y desarrollo integral de proyectos urbanísticos con alcaldes, regidores, técnicos municipales y estudios de arquitectura.
+            </p>
+
+            <ul class="space-y-1 text-xs text-subtle font-light list-disc list-inside mb-3">
+              <li>Visitas técnicas a pie de obra y asesoramiento especializado de diseño e integración en el entorno.</li>
+              <li>Confección rigurosa de presupuestos y seguimiento integral de licitaciones públicas.</li>
+              <li>Negociación comercial y cierre con constructoras adjudicatarias.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 text-[10px] text-faint">
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Sector Público</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Licitaciones</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Prescripción Técnica</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Mobiliario Urbano</span>
+            </div>
+          </article>
+
+          <!-- 2. SOLARCHECK -->
+          <article class="exp-item relative pl-7" data-category="commercial">
+            <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full border border-neutral-400 bg-white"></span>
+
+            <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <div>
+                <h3 class="text-base sm:text-lg font-normal text-ink">Solarcheck</h3>
+                <span class="text-xs text-subtle font-light">Dpto. Técnico Comercial Contract</span>
+              </div>
+              <time class="text-xs text-faint font-mono">2021 — 2024</time>
+            </header>
+
+            <p class="text-xs sm:text-sm text-subtle font-light leading-relaxed mb-3">
+              Responsable comercial del canal contract en soluciones avanzadas de protección solar arquitectónica y eficiencia energética.
+            </p>
+
+            <ul class="space-y-1 text-xs text-subtle font-light list-disc list-inside mb-3">
+              <li>Elaboración de ofertas y presupuestos técnicos para proyectos de edificación.</li>
+              <li>Negociación de acuerdos comerciales con clientes clave e instaladores especializados.</li>
+              <li>Visitas y seguimiento técnico de obra; gestión y supervisión del canal de ventas online.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 text-[10px] text-faint">
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Canal Contract</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Eficiencia Energética</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Visitas de Obra</span>
+            </div>
+          </article>
+
+          <!-- 3. INTERNI BCN -->
+          <article class="exp-item relative pl-7" data-category="commercial">
+            <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full border border-neutral-400 bg-white"></span>
+
+            <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <div>
+                <h3 class="text-base sm:text-lg font-normal text-ink">Interni Bcn</h3>
+                <span class="text-xs text-subtle font-light">Dpto. Comercial & Prescripción</span>
+              </div>
+              <time class="text-xs text-faint font-mono">2018 — 2021</time>
+            </header>
+
+            <p class="text-xs sm:text-sm text-subtle font-light leading-relaxed mb-3">
+              Gestión comercial y prescripción de 5 prestigiosas firmas italianas de diseño de interiores y equipamiento contract.
+            </p>
+
+            <ul class="space-y-1 text-xs text-subtle font-light list-disc list-inside mb-3">
+              <li>Atención comercial directa a estudios de arquitectura, interiorismo, promotoras e inversores.</li>
+              <li>Visitas a pie de obra para replanteo y seguimiento minucioso de calidades.</li>
+              <li>Dinamización de canales corporativos en redes sociales para visibilidad de producto.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 text-[10px] text-faint">
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Diseño Italiano</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Estudios de Arquitectura</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Promotoras</span>
+            </div>
+          </article>
+
+          <!-- 4. GRUPO SELENTA -->
+          <article class="exp-item relative pl-7" data-category="commercial">
+            <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full border border-neutral-400 bg-white"></span>
+
+            <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <div>
+                <h3 class="text-base sm:text-lg font-normal text-ink">Grupo Selenta</h3>
+                <span class="text-xs text-subtle font-light">Comercial & Coordinador Audiovisuales</span>
+              </div>
+              <time class="text-xs text-faint font-mono">2017 — 2018</time>
+            </header>
+
+            <p class="text-xs sm:text-sm text-subtle font-light leading-relaxed mb-3">
+              Atención comercial y técnica de requerimientos audiovisuales para clientes corporativos y eventos en una cadena de 15 hoteles de alto standing.
+            </p>
+
+            <ul class="space-y-1 text-xs text-subtle font-light list-disc list-inside mb-3">
+              <li>Negociación con proveedores externos, gestión de márgenes y confección de propuestas.</li>
+              <li>Coordinación operativa in situ para asegurar una ejecución impecable del evento.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 text-[10px] text-faint">
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Hoteles Gran Lujo</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Eventos Corporativos</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Coordinación B2B</span>
+            </div>
+          </article>
+
+          <!-- 5. POLAR ELECTRO IBÉRICA -->
+          <article class="exp-item relative pl-7" data-category="tech-mkt">
+            <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full border border-neutral-400 bg-white"></span>
+
+            <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <div>
+                <h3 class="text-base sm:text-lg font-normal text-ink">Polar Electro Ibérica</h3>
+                <span class="text-xs text-subtle font-light">Dpto. de Marketing & Retail</span>
+              </div>
+              <time class="text-xs text-faint font-mono">2013 — 2017</time>
+            </header>
+
+            <p class="text-xs sm:text-sm text-subtle font-light leading-relaxed mb-3">
+              Desarrollo de estrategias de marca y apoyo comercial para la compañía referente mundial en pulsómetros, GPS y tecnología de entrenamiento.
+            </p>
+
+            <ul class="space-y-1 text-xs text-subtle font-light list-disc list-inside mb-3">
+              <li>Negociación de acuerdos de patrocinio y colaboraciones con eventos y marcas del sector deportivo.</li>
+              <li>Formación de producto a fuerzas de ventas de grandes cuentas (MediaMarkt, El Corte Inglés).</li>
+              <li>Elaboración del Sales Book para el equipo de ventas, soporte gráfico en RRSS y gestión de polar.com/es.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 text-[10px] text-faint">
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Trade Marketing</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Grandes Cuentas</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Patrocinios</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Sales Enablement</span>
+            </div>
+          </article>
+
+          <!-- 6. APUNTOLAPOSPO & FILMTEL -->
+          <article class="exp-item relative pl-7" data-category="tech-mkt">
+            <span class="absolute left-0 top-1.5 w-2 h-2 rounded-full border border-neutral-400 bg-white"></span>
+
+            <header class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <div>
+                <h3 class="text-base sm:text-lg font-normal text-ink">Apuntolapospo & Filmtel</h3>
+                <span class="text-xs text-subtle font-light">Digital Cinema & Post-producción</span>
+              </div>
+              <time class="text-xs text-faint font-mono">2000 — 2013</time>
+            </header>
+
+            <p class="text-xs sm:text-sm text-subtle font-light leading-relaxed mb-3">
+              13 años de sólida trayectoria en tecnologías audiovisuales de vanguardia, programación y desarrollo multimedia.
+            </p>
+
+            <ul class="space-y-1 text-xs text-subtle font-light list-disc list-inside mb-3">
+              <li>Responsable de Digital Cinema DCP Mastering, Blu-Ray y HD Authoring con interactividad en JavaScript.</li>
+              <li>Programación en C++ para 3D estereoscópico y desarrollo de aplicaciones web internas con HTML5, CSS3 y MySQL.</li>
+              <li>Diseño gráfico editorial e identidad corporativa aplicada.</li>
+            </ul>
+
+            <div class="flex flex-wrap gap-1.5 text-[10px] text-faint">
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Digital Cinema DCP</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">JavaScript / C++</span>
+              <span class="px-2 py-0.5 rounded bg-surface border border-neutral-200">Desarrollo Web</span>
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- PIE DE PÁGINA (Sobrio y minimalista) -->
+  <footer class="border-t border-borderline py-8 text-xs text-faint">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span>Salvi Vidal</span>
+        <span class="text-neutral-300">·</span>
+        <span>Barcelona</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="tel:607663084" class="hover:text-ink transition-colors">607 663 084</a>
+        <a href="mailto:salvividal@gmail.com" class="hover:text-ink transition-colors">salvividal@gmail.com</a>
+        <a href="https://linkedin.com/in/salvividal" target="_blank" rel="noopener noreferrer" class="hover:text-ink transition-colors">LinkedIn</a>
+        <a href="#" class="no-print hover:text-ink transition-colors" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">↑ Arriba</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- NOTIFICACIÓN TOAST FLOTANTE -->
+  <div id="copy-toast" class="fixed bottom-6 right-6 z-50 pointer-events-none opacity-0 translate-y-2 bg-ink text-white text-xs px-4 py-2.5 rounded-lg shadow-lg flex items-center gap-2">
+    <svg class="w-4 h-4 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+    </svg>
+    <span id="copy-toast-text">Copiado al portapapeles</span>
+  </div>
+
+  <script>
+    // Función de copiado al portapapeles con micro-toast
+    function copyToClipboard(text, message) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = text;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+      }
+
+      const toast = document.getElementById('copy-toast');
+      const toastText = document.getElementById('copy-toast-text');
+      toastText.textContent = message || 'Copiado al portapapeles';
+
+      toast.classList.remove('opacity-0', 'translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-2');
+      }, 2000);
+    }
+
+    // Filtro interactivo de experiencia
+    function filterExperience(category) {
+      const items = document.querySelectorAll('.exp-item');
+      const btnAll = document.getElementById('filter-btn-all');
+      const btnCom = document.getElementById('filter-btn-commercial');
+      const btnTech = document.getElementById('filter-btn-tech-mkt');
+
+      // Restablecer estilos de botones
+      [btnAll, btnCom, btnTech].forEach(btn => {
+        btn.className = 'px-2.5 py-1 rounded text-subtle hover:text-ink transition-colors';
+      });
+
+      if (category === 'all') {
+        btnAll.className = 'px-2.5 py-1 rounded text-ink bg-neutral-100 font-medium transition-colors';
+      } else if (category === 'commercial') {
+        btnCom.className = 'px-2.5 py-1 rounded text-ink bg-neutral-100 font-medium transition-colors';
+      } else if (category === 'tech-mkt') {
+        btnTech.className = 'px-2.5 py-1 rounded text-ink bg-neutral-100 font-medium transition-colors';
+      }
+
+      // Filtrar bloques
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
